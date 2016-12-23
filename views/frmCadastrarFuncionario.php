@@ -51,7 +51,7 @@ if (isset($_SESSION['NomeCadastrado'])) : ?>
 			
 			<div class="col-xs-2">
 				<label>Data de Nascimento</label>
-				<input id='date' name='dtn' required="required" placeholder="dd/mm/aaa" class='form-control'/>	
+				<input id='date' type='text' name='dtn'  required placeholder="dd/mm/aaa" class='form-control'/>	
 			</div>
 
 			<div  class="col-xs-2">
@@ -104,7 +104,12 @@ if (isset($_SESSION['NomeCadastrado'])) : ?>
 					<option value='am'>AM</option>
 				</select>
 			</div>
-		
+		<div class="col-xs-3">
+				<label>Complemento</label>
+				<input type="text" name='complemento' required='required'  id="complemento" class='form-control' maxlength="100" />
+			</div>
+
+
 		</div>
 		</fieldset>
 		<!-- #############Fim do formularionde endereço ############-->
@@ -135,10 +140,7 @@ if (isset($_SESSION['NomeCadastrado'])) : ?>
 
 		<button class='btn btn-primary btn-block'>Cadastrar</button>
 	</form>
-
-	<br><br>
-	<span><center class='alert alert-info'>Criado e desenvolvido por Lucas Henrique, Estevão Marlon, Pablo, Gustavo e Anderson</center></span>
-
+ 	
 
 
 <script type="text/javascript" language="javascript">
@@ -258,8 +260,6 @@ $(function(){
 	});
 });
 </script>
-
-
-
-
 </div>
+
+<?php include '../layout/rodape.html' ?>

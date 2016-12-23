@@ -94,7 +94,7 @@ $(function(){
 					$("#numero").val("");
 					$("#bairro").val("");
 					$("#complemento").val("");
-					$("#status").html('<h2  class="alert alert-warning">Cadastrado com sucesso!</h2>');
+					$("#status").html('<script type="text/javascript">swal({title: "Sucesso",text: "O Cliente foi Cadastrado com Sucesso!",	type: "success",confirmButtonText: "Fechar",allowEscapeKey: true});</script>');
 					
 				
 

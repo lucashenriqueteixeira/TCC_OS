@@ -1,7 +1,7 @@
 <?php
 
-include_once '/../classes/Funcionario.php';
-include_once '/../classes/Auxiliar.php';
+include_once '../classes/Funcionario.php';
+include_once '../classes/Auxiliar.php';
 
 	//faz a instancia da classe
 	$Funcionario = new Funcionario();
@@ -23,6 +23,7 @@ include_once '/../classes/Auxiliar.php';
 	$Funcionario->setBairroFuncionario($_POST['bairro']);
 	$Funcionario->setCidadeFuncionario($_POST['cidade']);
 	$Funcionario->setUFFuncionario($_POST['uf']);
+	$Funcionario->setComplementoFuncionario($_POST['complemento']);
 	
 	//login
 	$Funcionario->setLoginFuncionario($_POST['login']);

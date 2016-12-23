@@ -108,7 +108,7 @@ class Funcionario extends Conexao{
             $_SESSION['CargoCadastrado'] = $this->CargoFuncionario;
             $_SESSION['NomeCadastrado'] = $this->NomeFuncionario;
 
-            return header("location:frmCadastrarFuncionario.php");
+            return header("location:../views/frmCadastrarFuncionario.php");
 
         //caso tudo de errado, retorna o exception do erro e so lamente
         }catch (Exception $e)
@@ -174,6 +174,7 @@ class Funcionario extends Conexao{
             //caso tudo de errado, retorna o exception do erro e so lamente
         }catch (Exception $e)
         {
+            
                 //é feito um print do erro tratado
                 print "ERRO" . $e;
         }

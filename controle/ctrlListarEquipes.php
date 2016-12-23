@@ -1,5 +1,12 @@
 <?php
+#############################################
+# Metodo para fazer listagem de funcionarios
+# para cadastro de equipes
+#############################################
 
-//vai chamar o cabecalho da pagina
-require_once '../layout/cabecalho.php';
-?>
+
+include_once "../classes/Equipe.php";
+
+$listar = new Equipe();
+$listagem = $listar->ListarFunc();
+$listagemcdd = $listar->ListarCidade();

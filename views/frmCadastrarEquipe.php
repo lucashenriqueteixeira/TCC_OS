@@ -2,83 +2,113 @@
 <?php
 //vai chamar o cabecalho da pagina
 require_once '../layout/cabecalho.php';
-    /*
-    if($_SESSION['id'] == session_id()){
-			
-			if($_SESSION['cargo'] == "Administrador"){
-				
-			}
-			else{
-                            header ('location: index.php');
-                        }
-		}
-		
-		else{
-			header ('location: index.php');
-		}
-        */
+include_once '../controle/ctrlListarEquipes.php'
 
 ?>
+
+
+<?php
+####### Aqui onde fica a mensagem/modal/popup e confirmação #########
+if (isset($_SESSION['NomeCadastrado'])) : ?>
+
+<script type="text/javascript">
+    swal({
+        title: "Sucesso",
+        text: "A Equipe: <?php echo $_SESSION['NomeCadastrado']; ?> foi cadastrado com sucesso!",
+        type: "success",
+        confirmButtonText: "Fechar",
+        allowEscapeKey: true
+    });
+</script>
+
+<?php
+//destroi a super global para nao ficar mostrando a mensagem toda hora, mesmo atualizando a pagina
+unset($_SESSION['NomeEquipe']);
+unset($_SESSION['NomeCadastrado']);
+
+endif;
+
+########### Fim da mensagem de confirmação
+?>
+
+
+
+
 <title>Cadastro de funcionario</title>
 <div class='container'>
-	<form>
+
+
+	<form action="../controle/ctrlCadastrarEquipe.php" method=POST >
 		<h2>Cadastro de Equipe</h2>
-                
+                <!--  NOME DA EQUIPE   -->
                <div class="row">
                     <label>Nome da Equipe</label>
                     <input type="text" name="nome_da_equipe" class="form-control" id="NomeEquipe">
                 </div>
+
                 <div class="row">
                     <label>Funcionario1</label>
                     <select name="funcionario1" class="form-control" id="funcionario1">
-                    <option value="Func1">Func1</option>
-                    <option value="Func2">Func2</option>
-                    <option value="Func3">Func3</option>
-                    <option value="Func4">Func4</option>
+                    <option value="0"> Selecione Funcionario... </option>
+                    <?php foreach ($listagem as $i) : ?>
+                        <option value="<?php echo $i->idProfissionalCampo ?>"><?php echo $i->NomeProfissional ?></option>
+                    <?php endforeach ?>
                     </select>
                     
                 </div>
+                <!-- //NOME DA EQUIPE  -->
+
                 <div class="row">
                     <label>Funcionario2</label>
                     <select name="funcionario2"class="form-control" id="funcionario2">
-                    <option value="Func1">Func1</option>
-                    <option value="Func2">Func2</option>
-                    <option value="Func3">Func3</option>
-                    <option value="Func4">Func4</option>
+                    <option value="0"> Selecione Funcionario... </option>
+                    <?php foreach ($listagem as $i) : ?>
+                        <option value="<?php echo $i->idProfissionalCampo ?>"><?php echo $i->NomeProfissional ?></option>
+                    <?php endforeach ?>
                     </select>
                 </div>
+
+
                 <div class="row">
                     <label>Funcionario3</label>
                     <select name="funcionario3" class="form-control" id="funcionario3">
-                    <option value="Func1">Func1</option>
-                    <option value="Func2">Func2</option>
-                    <option value="Func3">Func3</option>
-                    <option value="Func4">Func4</option>
+                    <option value="0"> Selecione Funcionario... </option>
+                    <?php foreach ($listagem as $i) : ?>
+                        <option value="<?php echo $i->idProfissionalCampo ?>"><?php echo $i->NomeProfissional ?></option>
+                    <?php endforeach ?>
                     </select>
                 </div>
+
+
                 <div class="row">
                     <label>Funcionario4</label>
                     <select name="funcionario4" class="form-control" id="funcionario4">
-                    <option value="Func1">Func1</option>
-                    <option value="Func2">Func2</option>
-                    <option value="Func3">Func3</option>
-                    <option value="Func4">Func4</option>
+                    <option value="0"> Selecione Funcionario... </option>
+                    <?php foreach ($listagem as $i) : ?>
+                        <option value="<?php echo $i->idProfissionalCampo ?>"><?php echo $i->NomeProfissional ?></option>
+                    <?php endforeach ?>
                     </select>
                 </div>
+
+
                 <div class="row">
                     <label>Cidade Atendida</label>
                     <select name="cidade_atendida" class="form-control" id="cidade">
-                    <option value="Cidade1">Cidade1</option>
-                    <option value="Cidade2">Cidade2</option>
-                    <option value="Cidade3">Cidade3</option>
-                    <option value="Cidade4">Cidade4</option>
+                    
+                    <?php foreach ($listagemcdd as $i) : ?>
+                        <option value="<?php echo $i->cidade ?>"><?php echo $i->cidade ?></option>
+                    <?php endforeach ?>
                     </select>
                 </div>
+
+
                 <br><br>
                 <button class='btn btn-primary btn-block'>Cadastrar Equipe</button>
+
+
 	</form>
 
-<br><br>
-<span><center class='alert alert-info'>Criado e desenvolvido por Lucas Henrique, Estevão Marlon, Pablo, Gustavo e Anderson</center></span>
 
 </div>
+
+<?php include '../layout/rodape.html' ?>

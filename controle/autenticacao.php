@@ -26,8 +26,16 @@ include_once 'classes/Auxiliar.php';
    //caso retorne um valor do banco executa o if
 if ($dadosAtendente)
 {
+  //forço as configurações do php.ini
+  //para que possa aceitar o controller da session com os cokkies
+  ini_set("session.use_only_cookies","1");
+  ini_set("session.use_trans_sid","0");
 	//inicia a session
 	session_start();
+
+  //define que quando fechar o navegador, destrua a session
+  session_set_cookie_params(0,"/",$HTTP_SERVER_VARS["HTTP_HOST"],0);
+
   //cria uma super global session com o valor do id da sessao
   $_SESSION['id'] = session_id();
   $_SESSION['nome'] = $dadosAtendente->NomeAtendente;

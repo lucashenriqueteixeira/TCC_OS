@@ -39,8 +39,6 @@
                         <li class="pushy-link"><a href="frmIniciarAtendimento.php">Novo Atendimento</a></li>
                         <li class="pushy-link"><a href="frmListarAtendimento.php">Listar Atendimentos</a></li>
 						<li class="pushy-link"><a href="frmAlterarDadosAtendimento.php">Alterar Dados Atendimentos</a></li>
-						<li class="pushy-link"><a href="frmListarOS.php">Listar Ordens de servico</a></li>
-						<li class="pushy-link"><a href="frmAlterarDadosOS.php">Alterar Dados Ordem de Servico</a></li>
                     </ul>
                 </li>
 				<li class="pushy-submenu">
@@ -54,9 +52,9 @@
                 <li class="pushy-submenu">
                     <a href="#">Consultar Dados</a>
                     <ul>
-                        <li class="pushy-link"><a href="frmListarFuncionario.php">Funcionario</a></li>
-                        <li class="pushy-link"><a href="frmListarCliente.php">Cliente</a></li>
-                        <li class="pushy-link"><a href="frmListarEquipe.php">Equipe</a></li>
+                        <li class="pushy-link"><a href="frmbuscarfuncionario.php">Funcionario</a></li>
+                        <li class="pushy-link"><a href="frmbuscarcliente.php">Cliente</a></li>
+                        <li class="pushy-link"><a href="frmbuscarequipe.php">Equipe</a></li>
                     </ul>
                 </li>
                 <li class="pushy-link"><a href="#">Sobre</a></li>
@@ -72,7 +70,7 @@
             <div class="menu-btn">&#9776; Menu</div>
 
         </div>
-
+        
         <script src='../layout/dados_menu/js/pushy.js' ></script>
 
 <!-- #####Fim do menu #### -->

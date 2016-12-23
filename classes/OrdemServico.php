@@ -1,17 +1,12 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+include_once '../classes/Conexao.php';
 
 /**
  * Description of OrdemServico
  *
  * @author Administrador
  */
-class OrdemServico {
+class OrdemServico extends Conexao{
     
     //Atributos
     private $IdEquipe;
@@ -23,15 +18,25 @@ class OrdemServico {
     private $HoraFechamentoOS;
     private $OBSOS;
     private $StatusOS;
-    
-    //METODOS
-    public function CadastrarOS(){
-        
+
+
+
+    public function ListarOS($id){
+        try {
+            $sql = "SELECT * FROM atendimento JOIN ordemservico ON atendimento.ProtocoloAtendimento = ordemservico.OSProtocoloAtendimento WHERE OSProtocoloAtendimento = :id ;";
+
+            $p_sql = Conexao::abrirConexao()->prepare($sql);
+            $p_sql->bindValue(':id', $id);
+
+            $p_sql->execute();
+
+            return $p_sql->fetchall(PDO::FETCH_OBJ);
+        }catch (PDOException $e)
+        {
+            print $e;
+        }
     }
-    
-    public function ListarOS(){
-        
-    }
+
     
     public function AlterarDadosOS(){
         

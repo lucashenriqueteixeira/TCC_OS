@@ -10,6 +10,8 @@ $Cliente->setLogradouroCliente($_POST["logradouro"]);
 $Cliente->setBairroCliente($_POST["bairro"]);
 $Cliente->setCidadeCliente($_POST["cidade"]);
 $Cliente->setUFCliente($_POST["uf"]);
+$Cliente->setNCCliente($_POST['numero']);
+$Cliente->setComplementoCliente($_POST['complemento']);
 
 ##### DADOS PESSOAIS #####
 $Cliente->setNomeCliente($_POST['nome']);
@@ -29,11 +31,7 @@ $Cadastro = $Cliente->CadastrarCliente($ID);
 //caso de verdadeiro nós dois cadastros, cria as superglobais
 //que ativa a mensagem de sucesso
 if ($ID && $Cadastro) {
-	/*
-	session_start();
-	$_SESSION['sucesso'] = "sucesso";
-    $_SESSION['nomecliente'] = $_POST['nome'];
-    */
+	
 }else
 {
 	echo "Ocorreu um erro. Contate o administrador do sistema!";

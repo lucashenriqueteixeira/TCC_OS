@@ -33,9 +33,9 @@ require_once '../controle/ctrllistarcliente.php';
 			
 			<div class="col-xs-2">
 				<label>CPF</label>
-				<input id='cpf' name='cpf' placeholder='111.111.111.-11' value="<?php echo $CPF_CNPJ ?>"   class='form-control' type='text' />
+				<input id='cpf' name='cpf' placeholder='111.111.111.-11' value="<?php echo $CPF; ?>"   class='form-control' type='text' />
 			</div>
-			
+		
 			<div class="col-xs-2">
 				<label>CNPJ</label>
 				<input id='cnpj' placeholder='11.111.111/1111-11'  name='cnpj' class='form-control' type='text' />

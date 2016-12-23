@@ -6,7 +6,7 @@ class Auxiliar {
 	*/
 	private $senhaUsuario;
 	
-	/*Sobrecargas*/
+	
 	
 	function getSenhaUsuario()
 	{
@@ -27,20 +27,17 @@ class Auxiliar {
 	//converte data do banco para data br
 	public function DataBR($Data)
 	{
-		//converte os dados em array separados por '/'
-		$Dados = explode('-', $Data);
 
-		//retorna o resultado no formato do banco
-		return $DataBR = $Dados[2] . '/' . $Dados[1] . '/' . $Dados[0];
+		$DataBR = DateTime::createFromFormat('Y-m-d',$Data);
 
+		return $DataBR->format('d/m/Y');
 	}
 
 	//converte data br em data banco(eua)
 	public function DataBanco($Data)
 	{
-		$Dados = explode('/', $Data);
-
-		return $DataBR = $Dados[2] . '/' . $Dados[1] . '/' . $Dados[0];
+		$DataBanco = DateTime::createFromFormat('d/m/Y',$Data);
+		return $DataBanco->format('Y-m-d');
 
 	}
 
@@ -51,5 +48,21 @@ class Auxiliar {
 	{
 		$senhaCripto = MD5($this->senhaUsuario);
 		return $senhaCripto;
+	}
+
+	#=============================#
+	# Metodo para criar protocolo #
+	# Com base na data e hora     #
+	#=============================#
+
+	public function CriaProtocolo()
+	{
+		$ProtocoloDataHora = date("YmdHis");
+
+		//Converte os segundos em milisegundos e concaterna a restante do protocolo
+		$ProtocoloDataHora .= date('s') * 1000;
+
+		return $ProtocoloDataHora;
+		
 	}
 }

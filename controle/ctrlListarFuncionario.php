@@ -1,6 +1,11 @@
 <?php
-include_once ('../classes/Funcionario.php');
-include_once ('../classes/Auxiliar.php');
+/*
+* Esse codigo é usado para listar os dados do fucionario
+* para imprimir nós inputs, radios e selects
+* Para que possa ser realizado os updates
+*/
+include_once '../classes/Funcionario.php';
+include_once '../classes/Auxiliar.php';
 
 $Funcionario = new Funcionario();
 

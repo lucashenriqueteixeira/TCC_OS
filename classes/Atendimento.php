@@ -34,12 +34,37 @@ class Atendimento extends Conexao {
     private $OBSAtendimento;
     
     //METODOS
-    
+    //metodo responsavel por mostrar detalhes do atendimento
+    public function DetalhesAtendimento($Protocolo)
+    {
+        try
+        {
+            $sql = "SELECT * FROM clientes 
+                JOIN enderecos ON clientes.idEndereco = enderecos.idEndereco 
+                JOIN atendimento ON atendimento.NumeroContaCliente = clientes.NumeroConta
+                WHERE ProtocoloAtendimento = :Protocolo;";
+
+            $p_sql = Conexao::abrirConexao()->prepare($sql);
+            $p_sql->bindValue(":Protocolo", $Protocolo);
+            
+
+            $p_sql->execute();
+
+            //faz o retorno como um array de objetos
+            //para trabalhar com foreach
+            return $p_sql->fetchall(PDO::FETCH_OBJ);
+        }catch(Exception $e)
+        {
+            print $e;
+        }
+    }
+
+
+    //metodo 
     public function BuscarCliente(){
 
         try{
-            /*$hora=date("Y-m-d H:i:s");
-            echo strtotime($hora);*/
+            
             $sql = "SELECT * from clientes left join enderecos on enderecos.idEndereco = clientes.idEndereco where NumeroConta=:numconta or CPF_CNPJ=:cpf  limit 1;";
             $p_sql = Conexao::abrirConexao()->prepare($sql);
             $p_sql->bindValue(":cpf", $this->CPFCliente);
@@ -63,9 +88,9 @@ class Atendimento extends Conexao {
 
         try
         {
-            //O que é isso viado?
-            $SQL = "INSERT INTO atendimento (NumeroConta,idAtendente,DescServico,OBSAtendimento,StatusAtendimento,DataAberturaAtendimento,HoraAberturaAtendimento,PrioridadeAtendimento) 
-            VALUES (:NumContaCliente, :idAtendente, :DescServicoAtendimento, :OBSAtendimento, :StatusAtendimento, :DataAberturaAtendimento, :HoraAberturaAtendimento, :PrioridadeAtendimento );";
+            
+            $SQL = "INSERT INTO atendimento (NumeroContaCliente,idAtendente,DescServico,OBSAtendimento,StatusAtendimento,DataAberturaAtendimento,HoraAberturaAtendimento,PrioridadeAtendimento,TipoServicoAtendimento) 
+            VALUES (:NumContaCliente, :idAtendente, :DescServicoAtendimento, :OBSAtendimento, :StatusAtendimento, :DataAberturaAtendimento, :HoraAberturaAtendimento, :PrioridadeAtendimento,:TipoServicoAtendimento );";
 
             $p_sql = Conexao::abrirConexao()->prepare($SQL);
 
@@ -77,6 +102,7 @@ class Atendimento extends Conexao {
             $p_sql->bindValue(":DataAberturaAtendimento", $this->DataAberturaAtendimento);
             $p_sql->bindValue(":HoraAberturaAtendimento", $this->HoraAberturaAtendimento);
             $p_sql->bindValue(":PrioridadeAtendimento", $this->PrioridadeAtendimento);
+            $p_sql->bindValue(":TipoServicoAtendimento",$this->TipoServicoAtendimento);
             
 
 
@@ -94,6 +120,42 @@ class Atendimento extends Conexao {
         {
             print "ERRO===>" . $e;
         }
+    }
+
+    //metodo para buscar e listar atendimentos
+    public function BuscarAtendimento($Conta)
+    {
+        //caso o campo esteja vazio retorna tudo
+        if($Conta == ""){
+
+            $sql = "SELECT * FROM clientes JOIN enderecos ON clientes.idEndereco = enderecos.idEndereco 
+            JOIN atendimento ON atendimento.NumeroContaCliente = clientes.NumeroConta;";
+
+            $p_sql = Conexao::abrirConexao()->prepare($sql);
+            $p_sql->bindValue(":Conta", $Conta);
+
+            $p_sql->execute();
+
+        //faz o retorno como um array de objetos
+        //para trabalhar com foreach
+            return $p_sql->fetchall(PDO::FETCH_OBJ);
+        }
+
+        $sql = "SELECT * FROM clientes JOIN enderecos ON clientes.idEndereco = enderecos.idEndereco 
+            JOIN atendimento
+            ON atendimento.NumeroContaCliente = clientes.NumeroConta
+            WHERE clientes.NumeroConta = :Conta or clientes.CPF_CNPJ = :Conta;";
+
+        $p_sql = Conexao::abrirConexao()->prepare($sql);
+        $p_sql->bindValue(":Conta", $Conta);
+
+
+        $p_sql->execute();
+
+        //faz o retorno como um array de objetos
+        //para trabalhar com foreach
+        return $p_sql->fetchall(PDO::FETCH_OBJ);
+
     }
 
 

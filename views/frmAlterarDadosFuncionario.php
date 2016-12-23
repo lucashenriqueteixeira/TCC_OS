@@ -124,6 +124,8 @@ require_once '../controle/ctrlListarfuncionario.php';
 		<button class='btn btn-primary btn-block'>Alterar</button>
 	</form>
 
-<br><br>
-<span><center class='alert alert-info'>Criado e desenvolvido por Lucas Henrique, Estevão Marlon, Pablo, Gustavo e Anderson</center></span>
 </div>
+
+
+<br>
+<span><center class='alert alert-info'>Criado e desenvolvido por Lucas Henrique, Estevão Marlon, Pablo, Gustavo e Anderson</center></span>

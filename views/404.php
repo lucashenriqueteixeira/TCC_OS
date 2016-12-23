@@ -2,5 +2,73 @@
 <?php
 include_once '../layout/cabecalho.php';
 ?>
-<h1>error 404</h1>
-<h2>Pagina nao encontrada</h2>
+
+
+<html>
+<head>
+<title>Free funky 404 for Website Template | Home :: w3layouts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css">
+body{
+	font-family: 'Capriola', sans-serif;
+}
+body{
+	background:#DAD6CC;
+}	
+.wrap{
+	margin:0 auto;
+	width:1000px;
+}
+.logo h1{
+	font-size:200px;
+	color:#FF7A00;
+	text-align:center;
+	margin-bottom:1px;
+	text-shadow:4px 4px 1px white;
+}	
+.logo p{
+	color:#B1A18D;;
+	font-size:20px;
+	margin-top:1px;
+	text-align:center;
+}	
+.logo p span{
+	color:lightgreen;
+}	
+.sub a{
+	color:#ff7a00;
+	text-decoration:none;
+	padding:5px;
+	font-size:13px;
+	font-family: arial, serif;
+	font-weight:bold;
+}	
+.footer{
+	color:white;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}	
+.footer a{
+	color:#ff7a00;
+}	
+</style>
+</head>
+
+
+<body>
+	<div class="wrap">
+		<div class="logo">
+			<h1>404</h1>
+			<p> Descupe! Mas não encontramos o endereço.</p>
+			<div class="sub">
+			   <p><a href="MenuPrincipal.php">pagina principal</a></p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">
+	 Design by-<a href="http://w3layouts.com">W3Layouts</a>
+	</div>
+
+</body>

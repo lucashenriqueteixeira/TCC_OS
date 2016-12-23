@@ -2,25 +2,50 @@
 
 //vai chamar o cabecalho da pagina
 require_once '../layout/cabecalho.php';
-require_once '../controle/ctrlIniciarAtendimento.php';
 ?>
 
-<!-- tela para iniciar atendimento, Como ela vai ser? Não faço ideia. WTF veio WTF -->
+<?php
+####### Aqui onde fica a mensagem/modal/popup e confirmação #########
+if(isset($_SESSION['sucesso'])) : ?>
+
+    <script type="text/javascript">
+        swal({
+            title: "Sucesso",
+            text: "O Atendimento foi cadastrado com sucesso! \n Protocolo: <?php echo  $_SESSION['idProtocolo'] ?> ",
+            type: "success",
+            confirmButtonText: "Fechar",
+            allowEscapeKey: true
+        });
+    </script>
+
+    <?php
+//destroi a super global para nao ficar mostrando a mensagem toda hora, mesmo atualizando a pagina
+    unset($_SESSION['sucesso']);
+    unset($_SESSION['idProtocolo']);
+
+
+endif;
+
+########### Fim da mensagem de confirmação
+?>
+
+
+
+
+<?php
+    //controller do iniciar atendimento
+require_once '../controle/ctrlIniciarAtendimento.php';
+?>
 
 <div class="container">
 
 		
-			<div class="col-xs-4">
-				<label>Numero do protocolo</label>
-				<input type="text"  class='form-control' name="protocolo" placeholder='Protocolo' value="">
-			</div>
 		
 		<br><br><br>
 
 	<form method="POST">
 		<h1>Iniciar atendimento</h1>
 		
-
 		<div class="row">
 	
 
@@ -132,26 +157,26 @@ require_once '../controle/ctrlIniciarAtendimento.php';
 				<input type="hidden" name="id" value="<?php echo $valores->NumeroConta ?>">
 				<div class="col-xs-4">
 				<label>Tipo de serviço</label>
-					<input type="text" maxlenght="255" name="tipo" class="form-control">	
+					<input required="required" type="text" maxlenght="255" name="tipo" class="form-control">
 				</div>
 
 				<div class="col-xs-2">
 				<label>Prioridade</label>
-					<select name="prioridade" class="form-control">
+					<select required="required" name="prioridade" class="form-control">
 						<option>Selecione...</option>
-						<option value="ALTA">ALTA</option>
-						<option value="MEDIA">MEDIA</option>
-						<option value="BAIXA">BAIXA</option>
+						<option required="required" value="1 - ALTA">ALTA</option>
+						<option required="required" value="2 - MEDIA">MEDIA</option>
+						<option required="required"  value="3 - BAIXA">BAIXA</option>
 					</select><br>
 				</div>
 				
 				<div class="col-xs-7">
 				<label>Descrição do Serviço</label>
-				<textarea class="form-control" rows="4" name="desc" ></textarea>
+				<textarea required="required" class="form-control" rows="4" name="desc" ></textarea>
 				</div>
 				<div class="col-xs-5">
 				<label>Observação</label>
-				<textarea class="form-control" rows="4" name="obs" ></textarea>
+				<textarea required="required" class="form-control" rows="4" name="obs" ></textarea>
 				</div>
 			</fieldset>
 		</div>
@@ -189,3 +214,6 @@ if (isset($_SESSION['BuscaInvalida'])) : ?>
 
 
 	?>
+
+
+<?php include '../layout/rodape.html' ?>
